@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Livros</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #333; }
+    form, .livros { margin-top: 20px; }
+    input, button { margin: 5px; padding: 8px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    table, th, td { border: 1px solid #ccc; }
+    th, td { padding: 10px; text-align: left; }
+    button { cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>📚 Sistema de Livros</h1>
+
+  <!-- Criar livro -->
+  <form id="formLivro">
+    <input type="text" id="titulo" placeholder="Título" required>
+    <input type="text" id="autor" placeholder="Autor" required>
+    <input type="number" id="preco" placeholder="Preço" step="0.01" required>
+    <button type="submit">Adicionar Livro</button>
+  </form>
+
+  <!-- Buscar livro por ID -->
+  <div>
+    <h3>🔍 Buscar Livro por ID</h3>
+    <input type="number" id="livroId" placeholder="ID do livro">
+    <button onclick="buscarLivroPorId()">Buscar</button>
+    <div id="resultadoBusca"></div>
+  </div>
+
+  <!-- Listagem -->
+  <div class="livros">
+    <h2>📖 Lista de Livros</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Preço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaLivros"></tbody>
+    </table>
+  </div>
+<script type="module" src="/frontend.js"></script>
+</body>
+</html>
