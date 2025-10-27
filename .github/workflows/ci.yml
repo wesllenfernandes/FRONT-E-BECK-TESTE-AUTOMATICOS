@@ -32,9 +32,4 @@ jobs:
     - name: Run frontend tests
       run: npm run test:frontend
 
-    - name: Lint code (opcional)
-      run: npm run lint || echo "No lint script defined"
-
-    # Caso queira deploy, você pode adicionar aqui, por exemplo:
-    # - name: Deploy to server
-    #   run: ./deploy-script.sh
+  
