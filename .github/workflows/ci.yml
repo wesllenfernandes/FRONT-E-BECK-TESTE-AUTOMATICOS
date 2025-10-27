@@ -1,29 +1,30 @@
-name: Backend Tests
+name: CI Node.js Project
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: 18
 
     - name: Install dependencies
       run: npm install
 
-    - name: Fix Jest permissions
-      run: chmod +x ./node_modules/.bin/jest
+    - name: Rebuild sqlite3 for linux
+      run: npm rebuild sqlite3 --build-from-source
 
-    - name: Run Tests
+    - name: Run backend tests
       run: npm run test:backend
+
+    - name: Run frontend tests
+      run: npm run test:frontend
