@@ -27,10 +27,15 @@ jobs:
       run: npm install
 
     - name: Run backend tests
-      run: npm run test:backend
+      run: |
+        export NODE_ENV=test
+        npm run test:backend
 
     - name: Run frontend tests
-      run: npm run test:frontend
+      run: |
+        export NODE_ENV=test
+        npm run test:frontend
+
 
     - name: Lint code (opcional)
       run: npm run lint || echo "No lint script defined"
