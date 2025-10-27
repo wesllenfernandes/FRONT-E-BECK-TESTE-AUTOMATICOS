@@ -1,4 +1,4 @@
-name: CI Node.js Project
+name: CI Testes Automatizados
 
 on:
   push:
@@ -17,14 +17,14 @@ jobs:
       with:
         node-version: 18
 
-    - name: Install dependencies
+    - name: Instalar dependências
       run: npm install
 
-    - name: Rebuild sqlite3 for linux
+    - name: Recompilar SQLite para Linux
       run: npm rebuild sqlite3 --build-from-source
 
-    - name: Run backend tests
+    - name: Rodar testes do backend
       run: npm run test:backend
 
-    - name: Run frontend tests
+    - name: Rodar testes do frontend
       run: npm run test:frontend
