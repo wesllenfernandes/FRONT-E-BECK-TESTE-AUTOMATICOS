@@ -1,4 +1,4 @@
-name: CI Testes Automatizados
+name: Node.js CI
 
 on:
   push:
@@ -7,24 +7,34 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  build-and-test:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-    - uses: actions/setup-node@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: ${{ matrix.node-version }}
 
-    - name: Instalar dependências
+    - name: Install dependencies
       run: npm install
 
-    - name: Recompilar SQLite para Linux
-      run: npm rebuild sqlite3 --build-from-source
-
-    - name: Rodar testes do backend
+    - name: Run backend tests
       run: npm run test:backend
 
-    - name: Rodar testes do frontend
+    - name: Run frontend tests
       run: npm run test:frontend
+
+    - name: Lint code (opcional)
+      run: npm run lint || echo "No lint script defined"
+
+    # Caso queira deploy, você pode adicionar aqui, por exemplo:
+    # - name: Deploy to server
+    #   run: ./deploy-script.sh
