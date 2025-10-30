@@ -1,4 +1,4 @@
-jest.setTimeout(30000); // 30 segundos
+jest.setTimeout(30000); 
 
 const request = require('supertest');
 const { initDatabase, sequelize } = require('./index.js');

@@ -60,7 +60,7 @@ describe('Testes das funções do frontend', () => {
     confirm.mockClear();
     prompt.mockClear();
 
-    // Configurar os event listeners
+
     configurarEventListeners();
   });
 

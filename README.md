@@ -3,7 +3,6 @@
 Projeto de gerenciamento de livros com Node.jS,Express, MySQL e Sequelize.  
 Inclui testes automatizados backend e frontend com Jest, e deploy automático configurado para Render(caso dê certo) via GitHub Actions.
 
----
 
 ## **Funcionalidades**
 
